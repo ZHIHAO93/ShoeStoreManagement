@@ -2,8 +2,8 @@ package presentacion.comando.venta;
 
 import java.sql.SQLException;
 
-import negocio.serviciosAplicacion.FactorySA;
-import negocio.venta.TransferVenta;
+import business.factory.ApplicationServiceFactory;
+import business.sale.TransferSale;
 import presentacion.comando.Comando;
 import presentacion.comando.IDEventos;
 import presentacion.comando.factoriaComando.CommandResponse;
@@ -15,7 +15,7 @@ public class CerrarVenta implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(FactorySA.getInstance().getSAVenta().cerrarVenta((TransferVenta)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSAVenta().cerrarVenta((TransferSale)datos));
 			cr.setEvento(IDEventos.EVENTO_CERRAR_VENTA);
 		}
 		catch (SQLException e) {

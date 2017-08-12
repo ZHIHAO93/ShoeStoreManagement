@@ -2,8 +2,8 @@ package presentacion.comando.cliente;
 
 import java.sql.SQLException;
 
-import negocio.cliente.TransferCliente;
-import negocio.serviciosAplicacion.FactorySA;
+import business.customer.TransferCustomer;
+import business.factory.ApplicationServiceFactory;
 import presentacion.comando.Comando;
 import presentacion.comando.IDEventos;
 import presentacion.comando.factoriaComando.CommandResponse;
@@ -15,7 +15,7 @@ public class AltaCliente implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(FactorySA.getInstance().getSACliente().altaCliente((TransferCliente) datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSACliente().registerCustomer((TransferCustomer) datos));
 			cr.setEvento(IDEventos.EVENTO_ALTA_CLIENTE);
 		}
 		catch (SQLException e) {

@@ -2,7 +2,7 @@ package presentacion.comando.producto;
 
 import java.sql.SQLException;
 
-import negocio.serviciosAplicacion.FactorySA;
+import business.factory.ApplicationServiceFactory;
 import presentacion.comando.Comando;
 import presentacion.comando.IDEventos;
 import presentacion.comando.factoriaComando.CommandResponse;
@@ -13,7 +13,7 @@ public class TopProducto implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(FactorySA.getInstance().getSAProducto().topProducto());
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSAProducto().topProducto());
 			cr.setEvento(IDEventos.EVENTO_TOP_PRODUCTO);
 		}
 		catch (SQLException e) {

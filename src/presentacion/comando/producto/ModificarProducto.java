@@ -2,8 +2,8 @@ package presentacion.comando.producto;
 
 import java.sql.SQLException;
 
-import negocio.producto.TransferProducto;
-import negocio.serviciosAplicacion.FactorySA;
+import business.factory.ApplicationServiceFactory;
+import business.product.TransferProduct;
 import presentacion.comando.Comando;
 import presentacion.comando.IDEventos;
 import presentacion.comando.factoriaComando.CommandResponse;
@@ -14,7 +14,7 @@ public class ModificarProducto implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(FactorySA.getInstance().getSAProducto().modificarProducto((TransferProducto)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSAProducto().modificarProducto((TransferProduct)datos));
 			cr.setEvento(IDEventos.EVENTO_MODIFICAR_PRODUCTO);
 		}
 		catch (SQLException e) {

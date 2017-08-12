@@ -2,7 +2,7 @@ package presentacion.comando.cliente;
 
 import java.sql.SQLException;
 
-import negocio.serviciosAplicacion.FactorySA;
+import business.factory.ApplicationServiceFactory;
 import presentacion.comando.Comando;
 import presentacion.comando.IDEventos;
 import presentacion.comando.factoriaComando.CommandResponse;
@@ -14,7 +14,7 @@ public class ListarClientes implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(FactorySA.getInstance().getSACliente().listarClientes());
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSACliente().toListCustomer());
 			cr.setEvento(IDEventos.EVENTO_LISTAR_CLIENTES);
 		}
 		catch (SQLException e) {
