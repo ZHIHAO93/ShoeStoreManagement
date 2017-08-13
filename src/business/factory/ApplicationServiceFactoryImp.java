@@ -34,7 +34,7 @@ public class ApplicationServiceFactoryImp extends ApplicationServiceFactory {
 	}
 
 	/**
-	 * 获取产平应用服务接口的实现类
+	 * 获取产品应用服务接口的实现类
 	 */
 	@Override
 	public ProductApplicationService getProductAS() {

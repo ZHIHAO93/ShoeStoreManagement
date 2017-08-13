@@ -159,15 +159,15 @@ public class SaleApplicationServiceImp implements SaleApplicationService{
 						if(v.getCarrito().containsKey(e.getKey())) {
 							//Producto existe y activo en base de datos
 							TransferProduct p = daoProd.readById_Producto(e.getKey());
-							if(p != null && p.getActivo()) {
+							if(p != null && p.getEnable()) {
 								//Comprobar que el stock es mayor que la cantidad de ese producto
 								if(p.getStock() >= v.getCarrito().get(e.getKey()).getCantidad()) {
 									
 									//Meto precio de cada producto a cada linea de venta del carrito
-									v.getCarrito().get(e.getKey()).setPrecio(p.getPrecio());
+									v.getCarrito().get(e.getKey()).setPrecio(p.getPrice());
 									
 									//Incrementar totalVenta
-									auxTotalVenta += v.getCarrito().get(e.getKey()).getCantidad() * p.getPrecio();
+									auxTotalVenta += v.getCarrito().get(e.getKey()).getCantidad() * p.getPrice();
 										
 									//Actualizar stock de ese producto
 									p.setStock(p.getStock()-v.getCarrito().get(e.getKey()).getCantidad());

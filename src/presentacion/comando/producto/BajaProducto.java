@@ -13,7 +13,7 @@ public class BajaProducto implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getProductAS().bajaProducto((Integer)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getProductAS().inactiveProduct((Integer)datos));
 			cr.setEvento(IDEventos.EVENTO_BAJA_PRODUCTO);
 		}
 		catch (SQLException e) {

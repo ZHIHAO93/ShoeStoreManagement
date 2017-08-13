@@ -10,9 +10,9 @@ import java.util.ArrayList;
  */
 
 public interface CustomerApplicationService {
-	public boolean registerCustomer(TransferCustomer c) throws SQLException;
+	public boolean registerCustomer(TransferCustomer tc) throws SQLException;
 	public boolean inactiveCustomer(int idCustomer) throws SQLException;
-	public boolean modifyCustomer(TransferCustomer c) throws SQLException;
+	public boolean modifyCustomer(TransferCustomer tc) throws SQLException;
 	public TransferCustomer consultCustomer(int idCustomer) throws SQLException;
 	public ArrayList<TransferCustomer> toListCustomer() throws SQLException;
 	public ArrayList<TransferCustomer> topTenCustomers(TransferQuery topCustomer) throws SQLException;

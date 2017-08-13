@@ -220,7 +220,7 @@ public class DAOSaleImp implements DAOSale{
 			
 			PreparedStatement modificaStock = conexion.prepareStatement(actualizarStock);
 			modificaStock.setInt(1, p.getStock());
-			modificaStock.setInt(2, p.getIDProducto());
+			modificaStock.setInt(2, p.getIDProduct());
 			
 			if(modificaStock.executeUpdate() == 1) {
 				correcto = true;

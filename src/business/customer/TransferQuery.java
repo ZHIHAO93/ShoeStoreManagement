@@ -17,6 +17,7 @@ public class TransferQuery {
 
 	/**
 	 * 获取金额
+	 * 
 	 * @return nEuros 金额
 	 */
 	public Float getNEuros() {
@@ -25,7 +26,9 @@ public class TransferQuery {
 
 	/**
 	 * 设置金额
-	 * @param nEuros 金额
+	 * 
+	 * @param nEuros
+	 *            金额
 	 */
 	public void setNEuros(Float nEuros) {
 		this.nEuros = nEuros;
@@ -33,6 +36,7 @@ public class TransferQuery {
 
 	/**
 	 * 获取开始时间
+	 * 
 	 * @return startDate 开始时间
 	 */
 	public String getStartDate() {
@@ -41,14 +45,17 @@ public class TransferQuery {
 
 	/**
 	 * 设置开始时间
-	 * @param startDate 开始时间
+	 * 
+	 * @param startDate
+	 *            开始时间
 	 */
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
-	
+
 	/**
 	 * 获取结束时间
+	 * 
 	 * @return finalDate 结束时间
 	 */
 	public String getFinalDate() {
@@ -57,7 +64,9 @@ public class TransferQuery {
 
 	/**
 	 * 设置结束时间
-	 * @param finalDate 结束时间
+	 * 
+	 * @param finalDate
+	 *            结束时间
 	 */
 	public void setFinalDate(String finalDate) {
 		this.finalDate = finalDate;

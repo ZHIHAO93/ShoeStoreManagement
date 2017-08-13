@@ -23,7 +23,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 	/**
 	 * 事务管理对象
 	 */
-	TransactionManager t;
+	TransactionManager tm;
 	/**
 	 * 事务对象
 	 */
@@ -36,23 +36,23 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 	/**
 	 * 传递新客户的transfer对象来注册新客户
 	 * 
-	 * @param c
+	 * @param tc
 	 *            新客户的数据传递对象
 	 * @return correct true 表示成功，false 表示失败
 	 */
 	@Override
-	public boolean registerCustomer(TransferCustomer c) throws SQLException {
+	public boolean registerCustomer(TransferCustomer tc) throws SQLException {
 
 		boolean correct = false; // 创建操作是否成功的布尔值
-		t = TransactionManager.getInstance(); // 获得Transaction manager 的实例
-		transaction = t.nuevaTransaccion(); // 创建新的Transaction对象
+		tm = TransactionManager.getInstance(); // 获得Transaction manager 的实例
+		transaction = tm.nuevaTransaccion(); // 创建新的Transaction对象
 		daoCustomer = DAOFactory.getInstance().generaDAOCliente(); // 创建客户的DAO对象
 
 		transaction.start();
 
 		try {
 
-			TransferCustomer cDao = daoCustomer.readByDNI(c.getIdNumber()); // 从身份证查找新的客户
+			TransferCustomer cDao = daoCustomer.readByDNI(tc.getIdNumber()); // 从身份证查找新的客户
 
 			if ((cDao != null)) { // 客户已经存在
 
@@ -60,31 +60,31 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 					transaction.rollback();
 					throw new Exceptions("这个身份证已经被使用！");
 				} else { // 静止客户， 把状态改为活动中并提交
-					c.setIdCustomer(cDao.getIdCustomer());
-					correct = daoCustomer.update(c);
+					tc.setIdCustomer(cDao.getIdCustomer());
+					correct = daoCustomer.update(tc);
 					transaction.commit();
 				}
-			} else if (c.getName().equals("") || c.getLastName().equals("")) { // 确认姓名不是空值
+			} else if (tc.getName().equals("") || tc.getLastName().equals("")) { // 确认姓名不是空值
 				transaction.rollback();
 				throw new Exceptions("姓名不能为空");
-			} else if (c.getCreditLimit() > 0) {
+			} else if (tc.getCreditLimit() > 0) {
 
-				if (c.getNewsletter()) {
+				if (tc.getNewsletter()) {
 					transaction.rollback();
 					throw new Exceptions("Un Socio no puede tener Newsletter");
 				} else {
-					correct = daoCustomer.create(c);
+					correct = daoCustomer.create(tc);
 					transaction.commit();
 				}
 			} else { // 创建普通客户
-				correct = daoCustomer.create(c);
+				correct = daoCustomer.create(tc);
 				transaction.commit();
 			}
 		} catch (Exceptions e) {
 			transaction.rollback();
 			throw e;
 		} finally {
-			t.eliminaTransaccion(); // 删除事件对象
+			tm.eliminaTransaccion(); // 删除事件对象
 		}
 
 		return correct;
@@ -101,19 +101,19 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 	public boolean inactiveCustomer(int idCustomer) throws SQLException {
 
 		boolean correct = false; // 创建操作是否成功的布尔值
-		t = TransactionManager.getInstance(); // 获得Transaction manager 的实例
-		transaction = t.nuevaTransaccion(); // 创建新的Transaction对象
+		tm = TransactionManager.getInstance(); // 获得Transaction manager 的实例
+		transaction = tm.nuevaTransaccion(); // 创建新的Transaction对象
 		daoCustomer = DAOFactory.getInstance().generaDAOCliente(); // 创建客户的DAO对象
 
 		transaction.start();
 
 		try {
-			TransferCustomer c = daoCustomer.readById_Cliente(idCustomer); // 从id查找客户， 返回一个Transfer对象
+			TransferCustomer cDao = daoCustomer.readById_Cliente(idCustomer); // 从id查找客户， 返回一个TransferCustomer对象
 
-			if (c == null) { // 未找到客户，抛出异常
+			if (cDao == null) { // 未找到客户，抛出异常
 				throw new Exceptions("该客户不存在");
 			} else {
-				if (c.getEnable()) { // 如果是活动客户，禁用客户并提交
+				if (cDao.getEnable()) { // 如果是活动客户，禁用客户并提交
 					correct = daoCustomer.bajaCliente(idCustomer);
 					transaction.commit();
 				} else { // 否则报错
@@ -126,7 +126,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 			transaction.rollback();
 			throw e;
 		} finally {
-			t.eliminaTransaccion(); // 删除事件对象
+			tm.eliminaTransaccion(); // 删除事件对象
 		}
 
 		return correct;
@@ -134,7 +134,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 	}
 
 	/**
-	 * 传递一个transfer对象来修改客户的资料
+	 * 传递一个transferCustomer对象来修改客户的资料
 	 * 
 	 * @param c
 	 *            客户的数据传递对象
@@ -144,8 +144,8 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 	public boolean modifyCustomer(TransferCustomer c) throws SQLException {
 
 		boolean correct = false; // 创建操作是否成功的布尔值
-		t = TransactionManager.getInstance(); // 获得Transaction manager 的实例
-		transaction = t.nuevaTransaccion(); // 创建新的Transaction对象
+		tm = TransactionManager.getInstance(); // 获得Transaction manager 的实例
+		transaction = tm.nuevaTransaccion(); // 创建新的Transaction对象
 		daoCustomer = DAOFactory.getInstance().generaDAOCliente(); // 创建客户的DAO对象
 
 		transaction.start();
@@ -179,7 +179,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 			throw e;
 
 		} finally {
-			t.eliminaTransaccion(); // 删除时间对象
+			tm.eliminaTransaccion(); // 删除事件对象
 		}
 
 		return correct;
@@ -196,18 +196,18 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 	public TransferCustomer consultCustomer(int idCustomer) throws SQLException {
 
 		TransferCustomer c = null; // 创建新的数据传递对象
-		t = TransactionManager.getInstance(); // 获得Transaction manager 的实例
-		transaction = t.nuevaTransaccion(); // 创建新的Transaction对象
+		tm = TransactionManager.getInstance(); // 获得Transaction manager 的实例
+		transaction = tm.nuevaTransaccion(); // 创建新的Transaction对象
 		daoCustomer = DAOFactory.getInstance().generaDAOCliente(); // 创建客户的DAO对象
 
 		transaction.start();
 
 		try {
-			c = daoCustomer.readById_Cliente(idCustomer); // 通过id查找用户，并把返回transfer对象赋值给c
+			c = daoCustomer.readById_Cliente(idCustomer); // 通过id查找用户
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			t.eliminaTransaccion(); // 删除事务对象
+			tm.eliminaTransaccion(); // 删除事件对象
 		}
 
 		return c;
@@ -216,25 +216,25 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 	/**
 	 * 列举所有客户
 	 * 
-	 * @return customerList 所有客户的数据传递对象的ArrayList对象
+	 * @return customerList 所有客户的数据传递对象的ArrayList
 	 */
 	@Override
 	public ArrayList<TransferCustomer> toListCustomer() throws SQLException {
 
 		ArrayList<TransferCustomer> customerList = null; // 创建客户列表对象
 
-		t = TransactionManager.getInstance(); // 获得Transaction manager 的实例
-		transaction = t.nuevaTransaccion(); // 创建新的Transaction对象
+		tm = TransactionManager.getInstance(); // 获得Transaction manager 的实例
+		transaction = tm.nuevaTransaccion(); // 创建新的Transaction对象
 		daoCustomer = DAOFactory.getInstance().generaDAOCliente(); // 创建客户的DAO对象
 
 		transaction.start();
 
 		try {
-			customerList = daoCustomer.readAll(); // 获得所有用户资料，并赋值给customerList
+			customerList = daoCustomer.readAll(); // 获得所有用户资料
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			t.eliminaTransaccion(); // 删除事务对象
+			tm.eliminaTransaccion(); // 删除事件对象
 		}
 
 		return customerList;
@@ -252,8 +252,8 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 	public ArrayList<TransferCustomer> topTenCustomers(TransferQuery topCustomer) throws SQLException {
 
 		ArrayList<TransferCustomer> topCustomerList = null; // 创建十佳客户列表对象
-		t = TransactionManager.getInstance(); // 获得Transaction manager 的实例
-		transaction = t.nuevaTransaccion(); // 创建新的Transaction对象
+		tm = TransactionManager.getInstance(); // 获得Transaction manager 的实例
+		transaction = tm.nuevaTransaccion(); // 创建新的Transaction对象
 		daoCustomer = DAOFactory.getInstance().generaDAOCliente(); // 创建客户的DAO对象
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); // 格式化时间格式
@@ -285,7 +285,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			t.eliminaTransaccion(); // 删除事件对象
+			tm.eliminaTransaccion(); // 删除事件对象
 		}
 
 		return topCustomerList;

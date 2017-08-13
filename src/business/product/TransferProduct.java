@@ -1,77 +1,184 @@
 package business.product;
 
+/**
+ * 产品的数据传输对象
+ * 
+ * @author zhihao
+ *
+ */
 public class TransferProduct {
 
-	private Integer IDProducto;
-	private String marca;
-	private String tipo;
+	/**
+	 * 产品id
+	 */
+	private Integer idProduct;
+	/**
+	 * 产品品牌
+	 */
+	private String brand;
+	/**
+	 * 产品类型
+	 */
+	private String type;
+	/**
+	 * 产品颜色
+	 */
 	private String color;
-	private boolean activo;
+	/**
+	 * 产平状态， true 线上产品，false 下架产品
+	 */
+	private boolean enable;
+	/**
+	 * 产品库存量
+	 */
 	private Integer stock;
-	private Float precio;
+	/**
+	 * 产品价格
+	 */
+	private Float price;
 
+	/**
+	 * 构造器，初始化id为0
+	 */
 	public TransferProduct() {
-		IDProducto = 0;
+		idProduct = 0;
 	}
 
-	public Integer getIDProducto() {
-		return IDProducto;
+	/**
+	 * 获取产品ID
+	 * 
+	 * @return idProduct 产品ID
+	 */
+	public Integer getIDProduct() {
+		return idProduct;
 	}
 
-	public void setIDProducto(Integer iDProducto) {
-		this.IDProducto = iDProducto;
+	/**
+	 * 设置产品ID
+	 * 
+	 * @param idProduct
+	 *            产品ID
+	 */
+	public void setIDProduct(Integer idProduct) {
+		this.idProduct = idProduct;
 	}
 
-	public String getMarca() {
-		return marca;
+	/**
+	 * 获取产品品牌
+	 * 
+	 * @return brand 产品品牌
+	 */
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
+	/**
+	 * 设置产品品牌
+	 * 
+	 * @param brand
+	 *            产品品牌
+	 */
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
-	public String getTipo() {
-		return tipo;
+	/**
+	 * 获取产品类型
+	 * 
+	 * @return type 产品类型
+	 */
+	public String getType() {
+		return type;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	/**
+	 * 设置产品类型
+	 * 
+	 * @param type
+	 *            产品类型
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 
+	/**
+	 * 获取产品颜色
+	 * 
+	 * @return color 产品颜色
+	 */
 	public String getColor() {
 		return color;
 	}
 
+	/**
+	 * 设置产品颜色
+	 * 
+	 * @param color
+	 *            产品颜色
+	 */
 	public void setColor(String color) {
 		this.color = color;
 	}
 
-	public boolean getActivo() {
-		return activo;
+	/**
+	 * 获取产品状态
+	 * 
+	 * @return enable 产品状态
+	 */
+	public boolean getEnable() {
+		return enable;
 	}
 
-	public void setActivo(boolean activo) {
-		this.activo = activo;
+	/**
+	 * 设置产品状态
+	 * 
+	 * @param enable
+	 *            产品状态
+	 */
+	public void setEnable(boolean enable) {
+		this.enable = enable;
 	}
 
+	/**
+	 * 获取产品库存量
+	 * 
+	 * @return stock 产品库存量
+	 */
 	public Integer getStock() {
 		return stock;
 	}
 
+	/**
+	 * 设置产品库存量
+	 * 
+	 * @param stock
+	 *            产品库存量
+	 */
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 
-	public Float getPrecio() {
-		return precio;
+	/**
+	 * 获取产品价格
+	 * 
+	 * @return price 产品价格
+	 */
+	public Float getPrice() {
+		return price;
 	}
 
-	public void setPrecio(Float precio) {
-		this.precio = precio;
+	/**
+	 * 设置产品价格
+	 * 
+	 * @param price
+	 *            产品价格
+	 */
+	public void setPrice(Float price) {
+		this.price = price;
 	}
 
 	public String toString() {
-		return IDProducto + " " + marca + " " + tipo + " " + color + " " + activo + " " + stock + " " + precio;
+		return idProduct + " " + brand + " " + type + " " + color + " " + enable + " " + stock + " " + price;
 	}
 
 }

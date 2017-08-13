@@ -12,5 +12,5 @@ public interface DAOProduct {
 	public TransferProduct readById_Producto(int IDProducto) throws SQLException;
 	public TransferProduct readByName(String marca, String tipo, String color) throws SQLException;
 	public ArrayList<TransferProduct> readAll() throws SQLException;
-	public TransferProduct productoMasVendido() throws SQLException;
+	public TransferProduct bestSellerProduct() throws SQLException;
 }

@@ -16,7 +16,7 @@ public class ConsultarUnProducto implements Comando{
 		CommandResponse cr = new CommandResponse();
 		try {
 
-			cr.setDatos(ApplicationServiceFactory.getInstance().getProductAS().consultarUnProducto((Integer)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getProductAS().consultProduct((Integer)datos));
 			cr.setEvento(IDEventos.EVENTO_CONSULTAR_UN_PRODUCTO);
 
 		} catch (SQLException excep) {

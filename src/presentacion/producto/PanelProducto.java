@@ -749,11 +749,11 @@ public class PanelProducto extends JPanel implements ActionListener{
 			
 			if(!marcaA.getText().equals("") && !tipoA.getText().equals("") && !colorA.getText().equals("") && !stockA.getText().equals("") &&
 					!precioA.getText().equals("")) {
-				p.setMarca(marcaA.getText());
-				p.setTipo(tipoA.getText());
+				p.setBrand(marcaA.getText());
+				p.setType(tipoA.getText());
 				p.setColor(colorA.getText());
 				p.setStock(Integer.parseInt(stockA.getText()));
-				p.setPrecio(Float.parseFloat(precioA.getText()));
+				p.setPrice(Float.parseFloat(precioA.getText()));
 				
 				Controlador.getInstance().handleRequest(IDEventos.EVENTO_ALTA_PRODUCTO, p);
 				
@@ -787,12 +787,12 @@ public class PanelProducto extends JPanel implements ActionListener{
 				if(!marcaM.getText().equals("") && !tipoM.getText().equals("") && !colorM.getText().equals("") && !stockM.getText().equals("") &&
 						!precioM.getText().equals("")) {
 					
-					p.setIDProducto(Integer.parseInt(idM.getText()));
-					p.setMarca(marcaM.getText());
-					p.setTipo(tipoM.getText());
+					p.setIDProduct(Integer.parseInt(idM.getText()));
+					p.setBrand(marcaM.getText());
+					p.setType(tipoM.getText());
 					p.setColor(colorM.getText());
 					p.setStock(Integer.parseInt(stockM.getText()));
-					p.setPrecio(Float.parseFloat(precioM.getText()));
+					p.setPrice(Float.parseFloat(precioM.getText()));
 					
 					Controlador.getInstance().handleRequest(IDEventos.EVENTO_MODIFICAR_PRODUCTO, p);
 				}
@@ -958,11 +958,11 @@ public class PanelProducto extends JPanel implements ActionListener{
 					
 					if ( p != null ) {
 						
-						marcaC.setText(p.getMarca());
-						tipoC.setText(p.getTipo());
+						marcaC.setText(p.getBrand());
+						tipoC.setText(p.getType());
 						colorC.setText(p.getColor());
 						stockC.setText(p.getStock().toString());
-						precioC.setText(p.getPrecio().toString());	
+						precioC.setText(p.getPrice().toString());	
 						
 					}		
 				}
@@ -1006,13 +1006,13 @@ public class PanelProducto extends JPanel implements ActionListener{
 	                listActivoListar = new Boolean[arrayListp.size()];
 	                
 	                for(int i = 0; i < arrayListp.size(); i++) {
-	                	listIDListar[i] = arrayListp.get(i).getIDProducto();
-	                	listMarcaListar[i] = arrayListp.get(i).getMarca();
-		                listTipoListar[i] = arrayListp.get(i).getTipo();
+	                	listIDListar[i] = arrayListp.get(i).getIDProduct();
+	                	listMarcaListar[i] = arrayListp.get(i).getBrand();
+		                listTipoListar[i] = arrayListp.get(i).getType();
 		                listColorListar[i] = arrayListp.get(i).getColor();
 		                listStockListar[i] = arrayListp.get(i).getStock();
-		                listPrecioListar[i] = arrayListp.get(i).getPrecio();
-	                	listActivoListar[i] = arrayListp.get(i).getActivo();
+		                listPrecioListar[i] = arrayListp.get(i).getPrice();
+	                	listActivoListar[i] = arrayListp.get(i).getEnable();
 
 	                	jList9.setSelectedIndex(i);
 	                	jList11.setSelectedIndex(i);
@@ -1097,12 +1097,12 @@ public class PanelProducto extends JPanel implements ActionListener{
 					
 					if ( p != null ) {
 						
-						idT.setText(p.getIDProducto().toString());
-						marcaT.setText(p.getMarca());
-						tipoT.setText(p.getTipo());
+						idT.setText(p.getIDProduct().toString());
+						marcaT.setText(p.getBrand());
+						tipoT.setText(p.getType());
 						colorT.setText(p.getColor());
 						stockT.setText(p.getStock().toString());
-						precioT.setText(p.getPrecio().toString());
+						precioT.setText(p.getPrice().toString());
 					}		
 				}
 				else {

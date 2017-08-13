@@ -15,7 +15,7 @@ public class AltaProducto implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getProductAS().altaProducto((TransferProduct)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getProductAS().registerProduct((TransferProduct)datos));
 			cr.setEvento(IDEventos.EVENTO_ALTA_PRODUCTO);
 		}
 		catch (SQLException e) {

@@ -42,12 +42,12 @@ public class DAOProductImp implements DAOProduct{
 		
 		try {
 			PreparedStatement alta = conexion.prepareStatement(altaProducto);
-			alta.setString(1, t.getMarca());
-			alta.setString(2, t.getTipo());
+			alta.setString(1, t.getBrand());
+			alta.setString(2, t.getType());
 			alta.setString(3, t.getColor());
 			alta.setInt(4, t.getStock());
 			alta.setBoolean(5, true);
-			alta.setFloat(6, t.getPrecio());
+			alta.setFloat(6, t.getPrice());
 			
 			if(alta.executeUpdate() == 1) {
 				correcto = true;
@@ -100,12 +100,12 @@ public class DAOProductImp implements DAOProduct{
 		try {
 			
 			PreparedStatement modifica = conexion.prepareStatement(modificaProducto); 
-			modifica.setString(1, p.getMarca());
-			modifica.setString(2, p.getTipo());
+			modifica.setString(1, p.getBrand());
+			modifica.setString(2, p.getType());
 			modifica.setString(3, p.getColor());
 			modifica.setInt(4, p.getStock());
-			modifica.setFloat(5, p.getPrecio());
-			modifica.setInt(6, p.getIDProducto());
+			modifica.setFloat(5, p.getPrice());
+			modifica.setInt(6, p.getIDProduct());
 		
 			
 			if(modifica.executeUpdate() == 1) {
@@ -138,13 +138,13 @@ public class DAOProductImp implements DAOProduct{
 			while(resultado.next()) {
 				
 				p = new TransferProduct();
-				p.setIDProducto(resultado.getInt("ID_Producto"));
-				p.setMarca(resultado.getString("Marca"));
-				p.setTipo(resultado.getString("Tipo"));
+				p.setIDProduct(resultado.getInt("ID_Producto"));
+				p.setBrand(resultado.getString("Marca"));
+				p.setType(resultado.getString("Tipo"));
 				p.setColor(resultado.getString("Color"));
-				p.setActivo(resultado.getBoolean("Activo"));
+				p.setEnable(resultado.getBoolean("Activo"));
 				p.setStock(resultado.getInt("Stock"));
-				p.setPrecio(resultado.getFloat("Precio"));
+				p.setPrice(resultado.getFloat("Precio"));
 			}
 		
 			
@@ -175,13 +175,13 @@ public class DAOProductImp implements DAOProduct{
 			while(resultado.next()) {
 				
 				p = new TransferProduct();
-				p.setIDProducto(resultado.getInt("ID_Producto"));
-				p.setMarca(resultado.getString("Marca"));
-				p.setTipo(resultado.getString("Tipo"));
+				p.setIDProduct(resultado.getInt("ID_Producto"));
+				p.setBrand(resultado.getString("Marca"));
+				p.setType(resultado.getString("Tipo"));
 				p.setColor(resultado.getString("Color"));
-				p.setActivo(resultado.getBoolean("Activo"));
+				p.setEnable(resultado.getBoolean("Activo"));
 				p.setStock(resultado.getInt("Stock"));
-				p.setPrecio(resultado.getFloat("Precio"));
+				p.setPrice(resultado.getFloat("Precio"));
 			}
 
 		
@@ -213,13 +213,13 @@ public class DAOProductImp implements DAOProduct{
 			while(resultado.next()) {
 				
 				p = new TransferProduct();
-				p.setIDProducto(resultado.getInt("ID_Producto"));
-				p.setMarca(resultado.getString("Marca"));
-				p.setTipo(resultado.getString("Tipo"));
+				p.setIDProduct(resultado.getInt("ID_Producto"));
+				p.setBrand(resultado.getString("Marca"));
+				p.setType(resultado.getString("Tipo"));
 				p.setColor(resultado.getString("Color"));
-				p.setActivo(resultado.getBoolean("Activo"));
+				p.setEnable(resultado.getBoolean("Activo"));
 				p.setStock(resultado.getInt("Stock"));
-				p.setPrecio(resultado.getFloat("Precio"));
+				p.setPrice(resultado.getFloat("Precio"));
 				
 				productos.add(p); 
 			}
@@ -236,7 +236,7 @@ public class DAOProductImp implements DAOProduct{
 
 
 	@Override
-	public TransferProduct productoMasVendido() throws SQLException { 
+	public TransferProduct bestSellerProduct() throws SQLException { 
 		TransferProduct p = null;
 		Transaction transaccion = TransactionManager.getInstance().getTransaction();
 		Connection conexion = transaccion.getResource();
@@ -247,13 +247,13 @@ public class DAOProductImp implements DAOProduct{
 			
 			while(resultado.next()) { 
 				p = new TransferProduct();
-				p.setIDProducto(resultado.getInt("ID_Producto"));
-				p.setMarca(resultado.getString("Marca"));
-				p.setTipo(resultado.getString("Tipo"));
+				p.setIDProduct(resultado.getInt("ID_Producto"));
+				p.setBrand(resultado.getString("Marca"));
+				p.setType(resultado.getString("Tipo"));
 				p.setColor(resultado.getString("Color"));
 				p.setStock(resultado.getInt("Stock"));
-				p.setPrecio(resultado.getFloat("Precio"));
-				p.setActivo(resultado.getBoolean("Activo"));
+				p.setPrice(resultado.getFloat("Precio"));
+				p.setEnable(resultado.getBoolean("Activo"));
 			}
 		}
 		catch (Exceptions e){

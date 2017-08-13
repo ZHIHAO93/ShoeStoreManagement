@@ -43,9 +43,10 @@ public class TransferCustomer {
 	public TransferCustomer() {
 		idCustomer = 0;
 	}
-	
+
 	/**
 	 * 获取客户ID
+	 * 
 	 * @return idCustomer 客户ID
 	 */
 	public int getIdCustomer() {
@@ -54,7 +55,9 @@ public class TransferCustomer {
 
 	/**
 	 * 设置客户ID
-	 * @param idCustomer 客户ID
+	 * 
+	 * @param idCustomer
+	 *            客户ID
 	 */
 	public void setIdCustomer(int idCustomer) {
 		this.idCustomer = idCustomer;
@@ -62,6 +65,7 @@ public class TransferCustomer {
 
 	/**
 	 * 获取客户身份证
+	 * 
 	 * @return identificationNumber 客户身份证
 	 */
 	public String getIdNumber() {
@@ -70,7 +74,9 @@ public class TransferCustomer {
 
 	/**
 	 * 设置客户身份证
-	 * @param idNumber 客户身份证
+	 * 
+	 * @param idNumber
+	 *            客户身份证
 	 */
 	public void setIdNumber(String idNumber) {
 		this.identificationNumber = idNumber;
@@ -78,6 +84,7 @@ public class TransferCustomer {
 
 	/**
 	 * 获取客户名字
+	 * 
 	 * @return name 客户名字
 	 */
 	public String getName() {
@@ -86,7 +93,9 @@ public class TransferCustomer {
 
 	/**
 	 * 设置客户名字
-	 * @param name 客户名字
+	 * 
+	 * @param name
+	 *            客户名字
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -94,6 +103,7 @@ public class TransferCustomer {
 
 	/**
 	 * 获取客户姓氏
+	 * 
 	 * @return lastName 客户姓氏
 	 */
 	public String getLastName() {
@@ -102,7 +112,9 @@ public class TransferCustomer {
 
 	/**
 	 * 设置客户姓氏
-	 * @param lastName 客户姓氏
+	 * 
+	 * @param lastName
+	 *            客户姓氏
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -110,6 +122,7 @@ public class TransferCustomer {
 
 	/**
 	 * 获取客户状态
+	 * 
 	 * @return enable 客户状态， true 活动，false 禁止
 	 */
 	public Boolean getEnable() {
@@ -118,7 +131,9 @@ public class TransferCustomer {
 
 	/**
 	 * 这是客户状态
-	 * @param enable 客户状态， true 活动，false 禁止
+	 * 
+	 * @param enable
+	 *            客户状态， true 活动，false 禁止
 	 */
 	public void setEnable(Boolean enable) {
 		this.enable = enable;
@@ -142,6 +157,7 @@ public class TransferCustomer {
 
 	/**
 	 * 获取新品推广状态
+	 * 
 	 * @return newsletter 新品推广状态，true 接受， false 拒绝
 	 */
 	public boolean getNewsletter() {
@@ -150,7 +166,9 @@ public class TransferCustomer {
 
 	/**
 	 * 设置新品推广状态
-	 * @param newsletter 新品推广状态，true 接受，false 拒绝
+	 * 
+	 * @param newsletter
+	 *            新品推广状态，true 接受，false 拒绝
 	 */
 	public void setNewsletter(boolean newsletter) {
 		this.newsletter = newsletter;
