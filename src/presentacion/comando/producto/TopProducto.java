@@ -13,7 +13,7 @@ public class TopProducto implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSAProducto().topProducto());
+			cr.setDatos(ApplicationServiceFactory.getInstance().getProductAS().topProducto());
 			cr.setEvento(IDEventos.EVENTO_TOP_PRODUCTO);
 		}
 		catch (SQLException e) {

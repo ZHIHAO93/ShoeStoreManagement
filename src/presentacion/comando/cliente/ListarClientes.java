@@ -14,7 +14,7 @@ public class ListarClientes implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSACliente().toListCustomer());
+			cr.setDatos(ApplicationServiceFactory.getInstance().getCustomerAS().toListCustomer());
 			cr.setEvento(IDEventos.EVENTO_LISTAR_CLIENTES);
 		}
 		catch (SQLException e) {

@@ -15,7 +15,7 @@ public class AltaCliente implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSACliente().registerCustomer((TransferCustomer) datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getCustomerAS().registerCustomer((TransferCustomer) datos));
 			cr.setEvento(IDEventos.EVENTO_ALTA_CLIENTE);
 		}
 		catch (SQLException e) {

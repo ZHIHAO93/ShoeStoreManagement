@@ -14,7 +14,7 @@ public class ConsultarUnaVenta implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSAVenta().consultarUnaVenta((Integer)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().consultarUnaVenta((Integer)datos));
 			cr.setEvento(IDEventos.EVENTO_CONSULTAR_UNA_VENTA);
 		}
 		catch (SQLException e) {

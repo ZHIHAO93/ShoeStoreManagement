@@ -15,7 +15,7 @@ public class EliminarProductoCarrito implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSAVenta().eliminarProductoCarrito((TransferCart) datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().eliminarProductoCarrito((TransferCart) datos));
 			cr.setEvento(IDEventos.EVENTO_ELIMINAR_PRODUCTO_CARRITO);
 		}
 		catch (SQLException e) {

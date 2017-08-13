@@ -15,7 +15,7 @@ public class TopTenClientes implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSACliente().topTenCustomers((TransferQuery) datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getCustomerAS().topTenCustomers((TransferQuery) datos));
 			cr.setEvento(IDEventos.EVENTO_TOP_TEN_CLIENTES);
 		}
 		catch (SQLException e) {

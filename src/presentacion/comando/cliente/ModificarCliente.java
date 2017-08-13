@@ -15,7 +15,7 @@ public class ModificarCliente implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSACliente().modifyCustomer((TransferCustomer) datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getCustomerAS().modifyCustomer((TransferCustomer) datos));
 			cr.setEvento(IDEventos.EVENTO_MODIFICAR_CLIENTE);
 		}
 		catch (SQLException e) {

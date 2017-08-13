@@ -14,7 +14,7 @@ public class AbrirVenta implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSAVenta().abrirVenta((Integer)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().abrirVenta((Integer)datos));
 			cr.setEvento(IDEventos.EVENTO_ABRIR_VENTA);
 		}
 		catch (SQLException e) {

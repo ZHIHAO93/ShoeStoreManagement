@@ -14,7 +14,7 @@ public class ConsultarUnCliente implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSACliente().consultCustomer((Integer) datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getCustomerAS().consultCustomer((Integer) datos));
 			cr.setEvento(IDEventos.EVENTO_CONSULTAR_UN_CLIENTE);
 		}
 		catch (SQLException e) {

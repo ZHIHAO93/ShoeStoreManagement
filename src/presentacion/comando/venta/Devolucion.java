@@ -15,7 +15,7 @@ public class Devolucion implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSAVenta().devolucion((TransferLifeLine)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().devolucion((TransferLifeLine)datos));
 			cr.setEvento(IDEventos.EVENTO_DEVOLUCION_VENTA);
 		}
 		catch (SQLException e) {

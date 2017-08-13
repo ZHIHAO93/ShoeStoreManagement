@@ -14,7 +14,7 @@ public class ModificarProducto implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSAProducto().modificarProducto((TransferProduct)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getProductAS().modificarProducto((TransferProduct)datos));
 			cr.setEvento(IDEventos.EVENTO_MODIFICAR_PRODUCTO);
 		}
 		catch (SQLException e) {

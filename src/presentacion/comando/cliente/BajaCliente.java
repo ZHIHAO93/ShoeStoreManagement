@@ -14,7 +14,7 @@ public class BajaCliente implements Comando {
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSACliente().inactiveCustomer((Integer) datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getCustomerAS().inactiveCustomer((Integer) datos));
 			cr.setEvento(IDEventos.EVENTO_BAJA_CLIENTE);
 		}
 		catch (SQLException e) {
