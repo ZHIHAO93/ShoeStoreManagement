@@ -14,7 +14,7 @@ public class ListarVentas implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().listarVentas());
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().toListSale());
 			cr.setEvento(IDEventos.EVENTO_LISTAR_VENTAS);
 		}
 		catch (SQLException e) {

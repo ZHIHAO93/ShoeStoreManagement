@@ -15,7 +15,7 @@ public class AnadirProductoCarrito implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().anadirProductoCarrito((TransferCart) datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().addProductToCart((TransferCart) datos));
 			cr.setEvento(IDEventos.EVENTO_ANADIR_PRODUCTO_CARRITO);
 		}
 		catch (SQLException e) {

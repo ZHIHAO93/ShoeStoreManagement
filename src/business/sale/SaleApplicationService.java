@@ -3,12 +3,18 @@ package business.sale;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * 销售的应用服务接口
+ * 
+ * @author zhihao
+ *
+ */
 public interface SaleApplicationService {
-	public TransferSale abrirVenta(int IDCliente) throws SQLException;
-	public boolean devolucion(TransferLifeLine lv) throws SQLException;
-	public TransferSale consultarUnaVenta(int IDVenta) throws SQLException;
-	public ArrayList<TransferSale> listarVentas() throws SQLException;
-	public boolean cerrarVenta(TransferSale v) throws SQLException;
-	public TransferCart anadirProductoCarrito(TransferCart cr) throws SQLException;
-	public TransferCart eliminarProductoCarrito(TransferCart cr) throws SQLException;
+	public TransferSale openSale(int idClient) throws SQLException;
+	public boolean refund(TransferLifeLine ll) throws SQLException;
+	public TransferSale consultSale(int idSale) throws SQLException;
+	public ArrayList<TransferSale> toListSale() throws SQLException;
+	public boolean toCloseSale(TransferSale s) throws SQLException;
+	public TransferCart addProductToCart(TransferCart c) throws SQLException;
+	public TransferCart removeProductFromCart(TransferCart c) throws SQLException;
 }

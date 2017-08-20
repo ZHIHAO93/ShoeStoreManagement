@@ -79,7 +79,7 @@ public class ProductApplicationServiceImp implements ProductApplicationService {
 			transaction.rollback();
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return correct;
@@ -121,7 +121,7 @@ public class ProductApplicationServiceImp implements ProductApplicationService {
 			transaction.rollback();
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事务对象
 		}
 
 		return correct;
@@ -169,7 +169,7 @@ public class ProductApplicationServiceImp implements ProductApplicationService {
 			throw e;
 
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return correct;
@@ -198,7 +198,7 @@ public class ProductApplicationServiceImp implements ProductApplicationService {
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事务对象
+			tm.removeTransaction(); // 删除事务对象
 		}
 
 		return p;
@@ -224,7 +224,7 @@ public class ProductApplicationServiceImp implements ProductApplicationService {
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事务对象
 		}
 
 		return productList;
@@ -254,7 +254,7 @@ public class ProductApplicationServiceImp implements ProductApplicationService {
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return p;

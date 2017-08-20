@@ -2,38 +2,105 @@ package business.sale;
 
 import java.util.HashMap;
 
+/**
+ * 购物车数据传输对象
+ * 
+ * @author zhihao
+ *
+ */
 public class TransferCart {
 
-	private Integer IDProducto;
-	private float precio;
-	private Integer cantidad;
-	private HashMap<Integer, TransferLifeLine> carrito;
-	
-	
-	public Integer getIDProducto() {
-		return IDProducto;
+	/**
+	 * 产品id
+	 */
+	private Integer idProduct;
+	/**
+	 * 产品价格
+	 */
+	private float price;
+	/**
+	 * 产品数量
+	 */
+	private Integer quantity;
+	/**
+	 * 购物车
+	 */
+	private HashMap<Integer, TransferLifeLine> cart;
+
+	/**
+	 * 获取产品ID
+	 * 
+	 * @return idProduct 产品ID
+	 */
+	public Integer getIDProduct() {
+		return idProduct;
 	}
-	public void setIDProducto(int IDArticulo) {
-		this.IDProducto = IDArticulo;
+
+	/**
+	 * 设置产品ID
+	 * 
+	 * @param idProduct
+	 *            产品ID
+	 */
+	public void setIDProduct(int idProduct) {
+		this.idProduct = idProduct;
 	}
+
+	/**
+	 * 获取价格
+	 * 
+	 * @return price 价格
+	 */
 	public float getPrecio() {
-		return precio;
+		return price;
 	}
+
+	/**
+	 * 设置价格
+	 * 
+	 * @param precio
+	 *            价格
+	 */
 	public void setPrecio(float precio) {
-		this.precio = precio;
+		this.price = precio;
 	}
-	public int getCantidad() {
-		return cantidad;
+
+	/**
+	 * 获取数量
+	 * 
+	 * @return quantity 数量
+	 */
+	public int getQuantity() {
+		return quantity;
 	}
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
+
+	/**
+	 * 设置数量
+	 * 
+	 * @param quantity
+	 *            数量
+	 */
+	public void setCantidad(int quantity) {
+		this.quantity = quantity;
 	}
-	
+
+	/**
+	 * 获取购物车
+	 * 
+	 * @return cart 购物车
+	 */
 	public HashMap<Integer, TransferLifeLine> getCarrito() {
-		return carrito;
+		return cart;
 	}
+
+	/**
+	 * 设置购物车
+	 * 
+	 * @param carrito
+	 *            购物车
+	 */
 	public void setCarrito(HashMap<Integer, TransferLifeLine> carrito) {
-		this.carrito = carrito;
+		this.cart = carrito;
 	}
 
 }

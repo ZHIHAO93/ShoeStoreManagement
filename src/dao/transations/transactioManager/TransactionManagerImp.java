@@ -39,7 +39,7 @@ public class TransactionManagerImp extends TransactionManager{
 	}
 	
 	@Override
-	public Boolean eliminaTransaccion() throws Exceptions
+	public Boolean removeTransaction() throws Exceptions
 	{
 		Long threadId = Thread.currentThread().getId();
 		boolean correcto;

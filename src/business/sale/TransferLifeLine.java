@@ -1,39 +1,100 @@
 package business.sale;
 
 public class TransferLifeLine {
-	private Integer IDProducto;
-	private Float precio;
-	private Integer cantidad;
-	private Integer idVenta;
-	
-	
-	public Integer getIDProducto() {
-		return IDProducto;
+	/**
+	 * 产品ID
+	 */
+	private Integer idProduct;
+	/**
+	 * 产品价格
+	 */
+	private Float price;
+	/**
+	 * 产品数量
+	 */
+	private Integer quantity;
+	/**
+	 * 销售ID
+	 */
+	private Integer idSale;
+
+	/**
+	 * 获取产品ID
+	 * 
+	 * @return idProduct 产品ID
+	 */
+	public Integer getIDProduct() {
+		return idProduct;
 	}
-	public void setIDProducto(Integer IDProducto) {
-		this.IDProducto = IDProducto;
+
+	/**
+	 * 设置产品ID
+	 * 
+	 * @param idProduct
+	 *            产品ID
+	 */
+	public void setIDProducto(Integer idProduct) {
+		this.idProduct = idProduct;
 	}
-	public Float getPrecio() {
-		return precio;
+
+	/**
+	 * 获取产品价格
+	 * 
+	 * @return price 产品价格
+	 */
+	public Float getPrice() {
+		return price;
 	}
-	public void setPrecio(Float precio) {
-		this.precio = precio;
+
+	/**
+	 * 设置产品价格
+	 * 
+	 * @param price
+	 *            产品价格
+	 */
+	public void setPrice(Float price) {
+		this.price = price;
 	}
-	public Integer getCantidad() {
-		return cantidad;
+
+	/**
+	 * 获取产品数量
+	 * 
+	 * @return quantity 产品数量
+	 */
+	public Integer getQuantity() {
+		return quantity;
 	}
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+
+	/**
+	 * 设置数量
+	 * 
+	 * @param quantity
+	 *            数量
+	 */
+	public void setCantidad(Integer quantity) {
+		this.quantity = quantity;
 	}
-	
-	public Integer getIdVenta() {
-		return idVenta;
+
+	/**
+	 * 获取销售ID
+	 * 
+	 * @return idSale 销售ID
+	 */
+	public Integer getIDSale() {
+		return idSale;
 	}
-	public void setIdVenta(Integer idVenta) {
-		this.idVenta = idVenta;
+
+	/**
+	 * 设置销售ID
+	 * 
+	 * @param idSale
+	 *            销售ID
+	 */
+	public void setIdVenta(Integer idSale) {
+		this.idSale = idSale;
 	}
+
 	public String toString() {
-		return  "" + IDProducto + 
-				precio  + cantidad;
+		return "" + idProduct + price + quantity;
 	}
 }

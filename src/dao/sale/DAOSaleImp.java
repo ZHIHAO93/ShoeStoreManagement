@@ -39,7 +39,7 @@ public class DAOSaleImp implements DAOSale{
 		boolean correcto = false;
 		boolean esDevolucion = true;
 		 
-		if(auxActualizarLineaVenta(lv, v.getIDVenta()) && auxActualizarStock(p) && auxActualizarTotalVenta(v, esDevolucion)) {
+		if(auxActualizarLineaVenta(lv, v.getIDSale()) && auxActualizarStock(p) && auxActualizarTotalVenta(v, esDevolucion)) {
 			correcto = true;
 		}
 	
@@ -61,7 +61,7 @@ public class DAOSaleImp implements DAOSale{
 			while(resultado.next()) {
 				
 				v = new TransferSale();
-				v.setIDVenta(resultado.getInt("ID_Venta"));
+				v.setIDSale(resultado.getInt("ID_Venta"));
 				v.setTotalVenta(resultado.getFloat("Total_Venta"));
 				v.setFecha(resultado.getDate("Fecha"));
 				v.setIDCliente(resultado.getInt("ID_Cliente"));
@@ -96,7 +96,7 @@ public class DAOSaleImp implements DAOSale{
 				lv = new TransferLifeLine();
 				lv.setIDProducto(resultado.getInt("ID_Producto"));
 				lv.setCantidad(resultado.getInt("Cantidad"));
-				lv.setPrecio(resultado.getFloat("Precio"));
+				lv.setPrice(resultado.getFloat("Precio"));
 				
 			}
 		}
@@ -126,7 +126,7 @@ public class DAOSaleImp implements DAOSale{
 			while(resultado.next()) {
 				
 				v = new TransferSale();
-				v.setIDVenta(resultado.getInt("ID_Venta"));
+				v.setIDSale(resultado.getInt("ID_Venta"));
 				v.setTotalVenta(resultado.getFloat("Total_Venta"));
 				v.setFecha(resultado.getDate("Fecha"));
 				v.setIDCliente(resultado.getInt("ID_Cliente"));
@@ -157,9 +157,9 @@ public class DAOSaleImp implements DAOSale{
 			
 			//Insertamos la venta
 			PreparedStatement cerrarV = conexion.prepareStatement(cerrarVenta);
-			cerrarV.setFloat(1, v.getTotalVenta());
+			cerrarV.setFloat(1, v.getTotalSale());
 			cerrarV.setDate(2, v.getFecha());
-			cerrarV.setInt(3, v.getIDCliente());
+			cerrarV.setInt(3, v.getIDCustomer());
 			
 			if(cerrarV.executeUpdate()==1)
 				correcto = true;
@@ -170,14 +170,14 @@ public class DAOSaleImp implements DAOSale{
 			
 			//Iterador para recorrer el hashmap e ir cogiendo las idProducto
 			//Vamos insertando en su tabla cada linea de venta
-			Iterator<Entry<Integer, TransferLifeLine>> it = v.getCarrito().entrySet().iterator();
+			Iterator<Entry<Integer, TransferLifeLine>> it = v.getCart().entrySet().iterator();
 			while(it.hasNext()) {
 				Entry<Integer, TransferLifeLine> e = it.next();
 				
 				PreparedStatement cerrar = conexion.prepareStatement(cerrarLineaVenta);
-				cerrar.setInt(1, v.getCarrito().get(e.getKey()).getIDProducto());
-				cerrar.setInt(2, v.getCarrito().get(e.getKey()).getCantidad());
-				cerrar.setFloat(3, v.getCarrito().get(e.getKey()).getPrecio());
+				cerrar.setInt(1, v.getCart().get(e.getKey()).getIDProduct());
+				cerrar.setInt(2, v.getCart().get(e.getKey()).getQuantity());
+				cerrar.setFloat(3, v.getCart().get(e.getKey()).getPrice());
 				
 				if(cerrar.executeUpdate()==1)
 					correcto = true;
@@ -247,12 +247,12 @@ public class DAOSaleImp implements DAOSale{
 				PreparedStatement modificaTotal = null;
 				if(!esDevolucion) {
 					modificaTotal = conexion.prepareStatement(actualizarTotalVenta);
-					modificaTotal.setFloat(1, v.getTotalVenta());
+					modificaTotal.setFloat(1, v.getTotalSale());
 				}
 				else {
 					modificaTotal = conexion.prepareStatement(actualizarTotalVentaDevolucion);
-					modificaTotal.setFloat(1, v.getTotalVenta());
-					modificaTotal.setInt(2, v.getIDVenta());
+					modificaTotal.setFloat(1, v.getTotalSale());
+					modificaTotal.setInt(2, v.getIDSale());
 				}
 					
 				if(modificaTotal.executeUpdate() == 1) {
@@ -279,8 +279,8 @@ public class DAOSaleImp implements DAOSale{
 		try {
 			
 			PreparedStatement modificaTotal = conexion.prepareStatement(actualizarLineaVenta);
-			modificaTotal.setInt(1, lv.getCantidad());
-			modificaTotal.setInt(2, lv.getIDProducto());
+			modificaTotal.setInt(1, lv.getQuantity());
+			modificaTotal.setInt(2, lv.getIDProduct());
 			modificaTotal.setInt(3, IDVenta);
 			
 			if(modificaTotal.executeUpdate() == 1) {

@@ -21,5 +21,5 @@ public abstract class TransactionManager {
 	
 	public abstract Transaction nuevaTransaccion() throws Exceptions;
 	public abstract Transaction getTransaction() throws Exceptions;
-	public abstract Boolean eliminaTransaccion() throws Exceptions;
+	public abstract Boolean removeTransaction() throws Exceptions;
 }

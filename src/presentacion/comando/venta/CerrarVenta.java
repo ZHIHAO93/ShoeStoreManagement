@@ -15,7 +15,7 @@ public class CerrarVenta implements Comando{
 		
 		CommandResponse cr = new CommandResponse();
 		try {
-			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().cerrarVenta((TransferSale)datos));
+			cr.setDatos(ApplicationServiceFactory.getInstance().getSaleAS().toCloseSale((TransferSale)datos));
 			cr.setEvento(IDEventos.EVENTO_CERRAR_VENTA);
 		}
 		catch (SQLException e) {

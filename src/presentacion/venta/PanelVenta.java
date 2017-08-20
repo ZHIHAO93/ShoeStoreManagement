@@ -592,14 +592,14 @@ public class PanelVenta extends JPanel implements ActionListener {
 					
 					lv.setIDProducto(Integer.parseInt(idPV.getText()));
 					crtr.setCantidad(Integer.parseInt(cantidadV.getText()));
-					crtr.setIDProducto(Integer.parseInt(idPV.getText()));
+					crtr.setIDProduct(Integer.parseInt(idPV.getText()));
 					
 					
 
 											
 					Controlador.getInstance().handleRequest(IDEventos.EVENTO_ANADIR_PRODUCTO_CARRITO, crtr);
 					
-					lv.setCantidad(crtr.getCarrito().get(Integer.parseInt(idPV.getText())).getCantidad());
+					lv.setCantidad(crtr.getCarrito().get(Integer.parseInt(idPV.getText())).getQuantity());
 					crtr.getCarrito().put((Integer.parseInt(idPV.getText())), lv);
 					
 					
@@ -619,7 +619,7 @@ public class PanelVenta extends JPanel implements ActionListener {
 				
 					lv.setIDProducto(Integer.parseInt(idPV.getText()));
 					crtr.setCantidad(Integer.parseInt(cantidadV.getText()));
-					crtr.setIDProducto(Integer.parseInt(idPV.getText()));
+					crtr.setIDProduct(Integer.parseInt(idPV.getText()));
 					
 					
 			
@@ -676,7 +676,7 @@ public class PanelVenta extends JPanel implements ActionListener {
 				if ( datos instanceof TransferSale) {
 					
 					vtr = (TransferSale) datos;
-					crtr.setCarrito(vtr.getCarrito());
+					crtr.setCarrito(vtr.getCart());
 					
 					if ( vtr != null ) {
 						
@@ -715,17 +715,17 @@ public class PanelVenta extends JPanel implements ActionListener {
 			    		
 			    		if ( datos instanceof TransferCart) {
 
-			    			listIDProdVenta = new Integer[vtr.getCarrito().size()];
-	    					listCantidadVenta = new Integer[vtr.getCarrito().size()];
+			    			listIDProdVenta = new Integer[vtr.getCart().size()];
+	    					listCantidadVenta = new Integer[vtr.getCart().size()];
 			                	
 							
 							int k = 0; 
-							Iterator<Entry<Integer, TransferLifeLine>> it = vtr.getCarrito().entrySet().iterator();
+							Iterator<Entry<Integer, TransferLifeLine>> it = vtr.getCart().entrySet().iterator();
 							while(it.hasNext()) {
 								Entry<Integer, TransferLifeLine> e = it.next();
 								
 								listIDProdVenta[k] = e.getKey();
-					               listCantidadVenta[k] = e.getValue().getCantidad();
+					               listCantidadVenta[k] = e.getValue().getQuantity();
 		                			
 		                			jList19.setSelectedIndex(k);
 				                	jList20.setSelectedIndex(k);
@@ -776,16 +776,16 @@ public class PanelVenta extends JPanel implements ActionListener {
 		    		
     				if ( datos instanceof TransferCart) {
 
-    					listIDProdVenta = new Integer[vtr.getCarrito().size()];
-    					listCantidadVenta = new Integer[vtr.getCarrito().size()];
+    					listIDProdVenta = new Integer[vtr.getCart().size()];
+    					listCantidadVenta = new Integer[vtr.getCart().size()];
     					
     					int k = 0; 
-						Iterator<Entry<Integer, TransferLifeLine>> it = vtr.getCarrito().entrySet().iterator();
+						Iterator<Entry<Integer, TransferLifeLine>> it = vtr.getCart().entrySet().iterator();
 						while(it.hasNext()) {
 							Entry<Integer, TransferLifeLine> e = it.next();
 							
 							listIDProdVenta[k] = e.getKey();
-				               listCantidadVenta[k] = e.getValue().getCantidad();
+				               listCantidadVenta[k] = e.getValue().getQuantity();
 	                			
 	                			jList19.setSelectedIndex(k);
 			                	jList20.setSelectedIndex(k);
@@ -841,7 +841,7 @@ public class PanelVenta extends JPanel implements ActionListener {
 					Boolean correcto = (Boolean) datos;
 					
 					if ( correcto ) {
-						totalVV.setText(vtr.getTotalVenta().toString());
+						totalVV.setText(vtr.getTotalSale().toString());
 						fechaV.setText(vtr.getFecha().toString());
 					}
 				}
@@ -936,8 +936,8 @@ public class PanelVenta extends JPanel implements ActionListener {
 						if ( v != null ) {
 							
 							fechaC.setText(v.getFecha().toString());
-							idCC.setText(v.getIDCliente().toString());
-							totalVC.setText(v.getTotalVenta().toString());
+							idCC.setText(v.getIDCustomer().toString());
+							totalVC.setText(v.getTotalSale().toString());
 							
 							
 						}		
@@ -983,9 +983,9 @@ public class PanelVenta extends JPanel implements ActionListener {
 		                listFechaListar = new Date[arrayListv.size()];
 		                
 		                for(int i = 0; i < arrayListv.size(); i++) {
-		                	listIDVentaListar[i] = arrayListv.get(i).getIDVenta();
-		                	listIDClienteListar[i] = arrayListv.get(i).getIDCliente();
-		                	listTotalVentaListar[i] = arrayListv.get(i).getTotalVenta();
+		                	listIDVentaListar[i] = arrayListv.get(i).getIDSale();
+		                	listIDClienteListar[i] = arrayListv.get(i).getIDCustomer();
+		                	listTotalVentaListar[i] = arrayListv.get(i).getTotalSale();
 		                	listFechaListar[i] = arrayListv.get(i).getFecha();
 
 		                	jList22.setSelectedIndex(i);

@@ -84,7 +84,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 			transaction.rollback();
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return correct;
@@ -126,7 +126,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 			transaction.rollback();
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return correct;
@@ -179,7 +179,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 			throw e;
 
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return correct;
@@ -207,7 +207,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return c;
@@ -234,7 +234,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return customerList;
@@ -285,7 +285,7 @@ public class CustomerApplicationServiceImp implements CustomerApplicationService
 		} catch (Exceptions e) {
 			throw e;
 		} finally {
-			tm.eliminaTransaccion(); // 删除事件对象
+			tm.removeTransaction(); // 删除事件对象
 		}
 
 		return topCustomerList;
